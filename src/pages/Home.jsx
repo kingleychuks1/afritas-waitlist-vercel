@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { Home as HomeIcon, Ship, Landmark, CalendarDays } from "lucide-react";
 
 const API_URL = import.meta.env.VITE_API_URL || "";
 
@@ -15,22 +16,22 @@ const WAITLIST_INITIALS = ["KO", "AI", "TB"];
 
 const PILLARS = [
   {
-    icon: "\u{1F3E1}",
+    icon: HomeIcon,
     title: "Stays & short-lets",
     body: "Book verified apartments and short-lets across Africa's biggest cities, no middlemen.",
   },
   {
-    icon: "\u{1F6A4}",
+    icon: Ship,
     title: "Cruises & boats",
     body: "Reserve a boat ride or a sunset cruise on the water the same way you'd book a cab.",
   },
   {
-    icon: "\u{1F3DB}",
+    icon: Landmark,
     title: "Attractions",
     body: "Skip the queue for the events, parks and landmarks locals actually recommend.",
   },
   {
-    icon: "\u{1F4C5}",
+    icon: CalendarDays,
     title: "Events & guides",
     body: "Find what's happening this weekend, curated by people who live there.",
   },
@@ -219,7 +220,9 @@ export default function Home() {
           <div className="pillars">
             {PILLARS.map((p) => (
               <div className="pillar" key={p.title}>
-                <div className="icon">{p.icon}</div>
+                <div className="icon">
+                  <p.icon size={20} strokeWidth={1.8} />
+                </div>
                 <h3>{p.title}</h3>
                 <p>{p.body}</p>
               </div>

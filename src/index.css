@@ -706,11 +706,6 @@ footer .foot-links {
   margin-top: 4px;
 }
 
-.wl-submit.btn-primary {
-  background: #e8492e;
-  box-shadow: 0 8px 20px rgba(232, 73, 46, 0.28);
-}
-
 .wl-footnote {
   text-align: center;
   font-size: 12px;
@@ -726,8 +721,8 @@ footer .foot-links {
   width: 72px;
   height: 72px;
   border-radius: 20px;
-  background: #fdece8;
-  color: #e8492e;
+  background: var(--green-tint);
+  color: var(--green-dark);
   display: flex;
   align-items: center;
   justify-content: center;
