@@ -83,7 +83,7 @@ export default function Waitlist() {
                   type="text"
                   value={firstName}
                   onChange={(e) => setFirstName(e.target.value)}
-                  placeholder="Emeka"
+                  placeholder="Oluwaseun"
                 />
               </label>
 
