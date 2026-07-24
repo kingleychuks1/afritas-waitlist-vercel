@@ -6,13 +6,22 @@ Figma file; page structure follows gymduoo.com's launch pattern (hero + countdow
 pillars, how it works, FAQ, closing CTA).
 
 ```
-├── src/            React app (App.jsx has all copy/sections, index.css has all styling)
+├── src/
+│   ├── App.jsx          router only (react-router-dom)
+│   ├── pages/Home.jsx   marketing landing page
+│   ├── pages/Waitlist.jsx  dedicated /waitlist page + post-submit success screen
+│   └── index.css        all styling
 ├── api/
 │   ├── waitlist.js         POST — insert a signup
 │   └── waitlist-count.js   GET  — total signups, for the social-proof line
 ├── lib/db.js       creates the `signups` table on first call
+├── vercel.json      rewrites so client-side routes (e.g. /waitlist) work on refresh
 ├── index.html, vite.config.js, package.json
 ```
+
+`/waitlist` is styled after vaultpouch.com/waitlist — back-to-home bar, centered card, first
+name (optional) + email, consent checkbox. On success it swaps to a confirmation card
+(shield-check icon, "You're in, NAME!", back-to-home button).
 
 ## 1. Push to GitHub
 

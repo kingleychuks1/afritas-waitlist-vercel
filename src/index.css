@@ -563,6 +563,187 @@ footer .foot-links {
   gap: 22px;
 }
 
+/* Dedicated /waitlist page (VaultPouch-style) */
+.wl-shell {
+  min-height: 100vh;
+  background: #f3f4f6;
+  display: flex;
+  flex-direction: column;
+}
+
+.wl-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px;
+}
+
+.wl-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #fff;
+  color: #0e1e33;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 12px 20px;
+  border-radius: 999px;
+  text-decoration: none;
+  box-shadow: 0 1px 2px rgba(14, 30, 51, 0.06);
+}
+
+.wl-close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #fff;
+  color: #0e1e33;
+  font-size: 20px;
+  text-decoration: none;
+  box-shadow: 0 1px 2px rgba(14, 30, 51, 0.06);
+}
+
+.wl-center {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.wl-card {
+  background: #fff;
+  border-radius: 28px;
+  padding: 48px 44px;
+  width: 100%;
+  max-width: 460px;
+  box-shadow: 0 20px 50px rgba(14, 30, 51, 0.1);
+  text-align: left;
+}
+
+.wl-card .eyebrow {
+  margin-bottom: 18px;
+}
+
+.wl-title {
+  font-size: 30px;
+  font-weight: 700;
+  color: #0e1e33;
+  margin: 0 0 14px;
+  letter-spacing: -0.01em;
+}
+
+.wl-lead {
+  color: var(--body);
+  font-size: 14.5px;
+  margin: 0 0 26px;
+}
+
+.wl-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.wl-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.wl-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #0e1e33;
+}
+
+.wl-label em {
+  font-style: normal;
+  font-weight: 400;
+  color: #9aa1ab;
+  margin-left: 6px;
+}
+
+.wl-field input[type="text"],
+.wl-field input[type="email"] {
+  padding: 13px 16px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  font-size: 14px;
+  font-family: inherit;
+  outline: none;
+}
+
+.wl-field input:focus {
+  border-color: var(--green);
+}
+
+.wl-consent {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  font-size: 12.5px;
+  color: #9aa1ab;
+  line-height: 1.5;
+}
+
+.wl-consent input {
+  margin-top: 3px;
+}
+
+.wl-submit {
+  width: 100%;
+  margin-top: 4px;
+}
+
+.wl-submit.btn-primary {
+  background: #e8492e;
+  box-shadow: 0 8px 20px rgba(232, 73, 46, 0.28);
+}
+
+.wl-footnote {
+  text-align: center;
+  font-size: 12px;
+  color: #9aa1ab;
+  margin: 20px 0 0;
+}
+
+.wl-success {
+  text-align: center;
+}
+
+.wl-icon {
+  width: 72px;
+  height: 72px;
+  border-radius: 20px;
+  background: #fdece8;
+  color: #e8492e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 24px;
+}
+
+.wl-icon svg {
+  width: 34px;
+  height: 34px;
+}
+
+.wl-success .wl-title {
+  text-align: center;
+}
+
+.wl-success .wl-lead {
+  text-align: center;
+}
+
+.wl-name {
+  text-transform: uppercase;
+}
+
 @media (max-width: 880px) {
   .hero-grid {
     grid-template-columns: 1fr;
