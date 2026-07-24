@@ -74,10 +74,10 @@ button {
 }
 
 .logo-mark {
-  width: 10px;
-  height: 10px;
-  border-radius: 3px;
-  background: var(--green);
+  width: 28px;
+  height: 28px;
+  border-radius: 7px;
+  object-fit: contain;
   display: inline-block;
 }
 
@@ -239,6 +239,13 @@ button {
   border: 2px solid #fff;
   margin-left: -8px;
   background: linear-gradient(135deg, var(--green), var(--green-dark));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
 }
 
 .avatars span:first-child {

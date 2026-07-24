@@ -3,11 +3,15 @@ import { Link } from "react-router-dom";
 
 const API_URL = import.meta.env.VITE_API_URL || "";
 
-// Edit this to your real launch date.
-const LAUNCH_DATE = new Date("2026-09-01T00:00:00");
+// Edit this to your real launch date. Currently ~50 days out.
+const LAUNCH_DATE = new Date("2026-09-12T00:00:00");
 
 const heroImage =
   "https://www.figma.com/api/mcp/asset/51afa367-4c67-43e6-ad34-48eda394fea6";
+
+const logoMark = "https://www.figma.com/api/mcp/asset/26ca8400-06b8-4392-a3ec-842e93477f8d";
+
+const WAITLIST_INITIALS = ["KO", "AI", "TB"];
 
 const PILLARS = [
   {
@@ -105,7 +109,7 @@ export default function Home() {
       <nav className="nav">
         <div className="wrap">
           <div className="logo">
-            <span className="logo-mark" />
+            <img src={logoMark} alt="Afritas" className="logo-mark" />
             Afritas
           </div>
           <div className="nav-links">
@@ -162,9 +166,9 @@ export default function Home() {
 
             <div className="social-proof">
               <span className="avatars">
-                <span />
-                <span />
-                <span />
+                {WAITLIST_INITIALS.map((initials) => (
+                  <span key={initials}>{initials}</span>
+                ))}
               </span>
               <span>
                 {count !== null ? `${count.toLocaleString()} people` : "People"} already on the
@@ -282,7 +286,7 @@ export default function Home() {
       <footer>
         <div className="wrap">
           <div className="logo">
-            <span className="logo-mark" />
+            <img src={logoMark} alt="Afritas" className="logo-mark" />
             Afritas
           </div>
           <div className="foot-links">
