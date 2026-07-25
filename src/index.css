@@ -329,11 +329,13 @@ summary:focus-visible,
   height: 160px;
 }
 
-.booking-photo img {
+.booking-photo img,
+.booking-art {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: top;
+  display: block;
 }
 
 .booking-service {
