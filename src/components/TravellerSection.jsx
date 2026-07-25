@@ -9,7 +9,7 @@ import {
   CheckCircle2,
   Wallet,
 } from "lucide-react";
-import { Reveal } from "../hooks.js";
+import { Reveal } from "../hooks.jsx";
 
 const CATS = [
   { icon: Building2, label: "Hotels", active: true },

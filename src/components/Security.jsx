@@ -1,5 +1,5 @@
 import { ShieldCheck, Lock, FileText, CheckCircle2, Headset, CalendarClock } from "lucide-react";
-import { Reveal } from "../hooks.js";
+import { Reveal } from "../hooks.jsx";
 
 const POINTS = [
   { icon: ShieldCheck, label: "Verified vendor profiles" },

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { CheckCircle2 } from "lucide-react";
 import { API_URL } from "../config.js";
-import { Reveal } from "../hooks.js";
+import { Reveal } from "../hooks.jsx";
 
 const TRAVELLER_SERVICES = [
   "Hotels",

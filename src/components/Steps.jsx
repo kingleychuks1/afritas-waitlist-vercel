@@ -1,4 +1,4 @@
-import { Reveal } from "../hooks.js";
+import { Reveal } from "../hooks.jsx";
 
 const STEPS = [
   {

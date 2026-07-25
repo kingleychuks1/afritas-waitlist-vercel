@@ -8,7 +8,7 @@ import {
   Compass,
   KeyRound,
 } from "lucide-react";
-import { Reveal } from "../hooks.js";
+import { Reveal } from "../hooks.jsx";
 
 const CAPABILITIES = [
   "Create and manage listings",

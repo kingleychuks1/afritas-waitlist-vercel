@@ -8,7 +8,7 @@ import {
   Wallet,
   CalendarCheck,
 } from "lucide-react";
-import { useCountdown, pad } from "../hooks.js";
+import { useCountdown, pad } from "../hooks.jsx";
 import { LAUNCH_DATE } from "../config.js";
 
 const propertyImage =
