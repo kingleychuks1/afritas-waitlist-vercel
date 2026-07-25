@@ -1,80 +1,96 @@
-# Afritas — Waitlist landing page (Vercel-ready)
+# Afritas — one-page launch & waitlist site
 
-Single Vercel project: React/Vite frontend + serverless API functions + Vercel Postgres.
-Content, colors (`#41B11A` green, `#403C3C` ink), and type (Poppins) pulled from the Afritas
-Figma file; page structure follows gymduoo.com's launch pattern (hero + countdown, feature
-pillars, how it works, FAQ, closing CTA).
+A single-page React/Vite site (structural/visual inspiration from gymduoo.com's layout, not
+its content) with a dual traveller/vendor waitlist backed by the Neon Postgres database
+already connected to this project via Vercel Storage, deployable as one Vercel project.
 
 ```
 ├── src/
-│   ├── App.jsx          router only (react-router-dom)
-│   ├── pages/Home.jsx   marketing landing page
-│   ├── pages/Waitlist.jsx  dedicated /waitlist page + post-submit success screen
-│   └── index.css        all styling
+│   ├── config.js         LAUNCH_DATE (single place to change it), logo URL, brand info
+│   ├── hooks.js           useCountdown, useReveal / <Reveal> scroll-in animation
+│   ├── index.css          all styling (DM Sans, brand tokens, mockups, marquee, forms)
+│   ├── pages/Home.jsx      assembles every section
+│   └── components/         Nav, Hero, Steps, CategoryMarquee, Intro, TravellerSection,
+│                            VendorSection, Security, WaitlistSection, Faq, FinalCta, Footer
 ├── api/
-│   ├── waitlist.js         POST — insert a signup
-│   └── waitlist-count.js   GET  — total signups, for the social-proof line
-├── lib/db.js       creates the `signups` table on first call
-├── vercel.json      rewrites so client-side routes (e.g. /waitlist) work on refresh
-├── index.html, vite.config.js, package.json
+│   ├── traveller-waitlist.js   POST — validates + inserts into `traveller_waitlist`
+│   └── vendor-waitlist.js      POST — validates + inserts into `vendor_waitlist`
+├── lib/
+│   ├── db.js               Neon serverless client + auto-creates both tables on first use
+│   └── validate.js         shared field/email validation helpers
+├── sql/schema.sql         optional — same tables db.js creates automatically, for reference
+├── vercel.json, index.html, vite.config.js, package.json
 ```
 
-`/waitlist` is styled after vaultpouch.com/waitlist — back-to-home bar, centered card, first
-name (optional) + email, consent checkbox. On success it swaps to a confirmation card
-(shield-check icon, "You're in, NAME!", back-to-home button).
+## Brand notes
 
-## 1. Push to GitHub
+- Logo: pulled live from `https://useafritas.com/logo/logo.png` (the real Afritas site) —
+  permanent, not a temporary export.
+- Colour + type: I couldn't get a real browser session to sample useafritas.com's computed
+  CSS this round (no color/theme metadata in the page's static HTML, and my browser tool
+  wasn't reachable), so the palette here is the green already confirmed from the actual
+  Afritas app screens in Figma (`#1E8F4E` primary / `#146638` dark), on a warm off-white
+  background per the brief. If useafritas.com uses a different exact hex, tell me the value
+  (or reconnect the browser tool) and I'll swap `--green` / `--green-dark` in `index.css`.
+- Font: DM Sans, loaded from Google Fonts in `index.html`.
+
+## 1. Database
+
+Nothing to set up — this uses the Neon Postgres database you already connected to this
+project through Vercel Storage. `lib/db.js` reads whichever connection string Vercel
+injected (`DATABASE_URL`, `POSTGRES_URL`, or `POSTGRES_PRISMA_URL`, checked in that order)
+and creates `traveller_waitlist` / `vendor_waitlist` automatically the first time someone
+joins a waitlist. `sql/schema.sql` has the same `CREATE TABLE` statements if you'd rather
+run them by hand first via the Neon SQL editor or Vercel's Storage → Query tab.
+
+## 2. Push to GitHub
 
 ```bash
 cd afritas-waitlist-vercel
 git init
 git add .
-git commit -m "Afritas waitlist page"
+git commit -m "Afritas one-page launch site"
 git branch -M main
-git remote add origin https://github.com/<your-username>/afritas-waitlist.git
+git remote add origin https://github.com/<your-username>/afritas.git
 git push -u origin main
 ```
 
-(Create the empty repo on github.com first, or via `gh repo create afritas-waitlist --private --source=. --push` if you have the GitHub CLI.)
+## 3. Deploy to Vercel
 
-## 2. Deploy to Vercel
-
-Easiest path — import from GitHub:
-
-1. Go to vercel.com/new, import the `afritas-waitlist` repo. Framework preset auto-detects as Vite.
-2. Deploy once (it'll build fine; the API will 500 until step 3 — that's expected).
-3. In the project: **Storage → Create Database → Postgres** (Neon-backed), then **Connect** it to
-   this project. Vercel adds the `POSTGRES_URL` env var automatically.
-4. Redeploy (Deployments tab → ⋯ → Redeploy), or just push a new commit.
-
-That's it — `signups` table is created automatically on the first API call.
-
-Or via CLI instead of the dashboard:
-
-```bash
-npm i -g vercel
-vercel login
-vercel link
-vercel          # first deploy
-# then create + connect Postgres from the dashboard as in step 3 above
-vercel --prod
-```
+1. vercel.com/new → import the repo (Vite auto-detected).
+2. Since the Neon storage is already connected to this project, the env vars are already
+   set — nothing to add manually.
+3. Deploy / redeploy.
 
 ## Local development
 
 ```bash
 npm install
-vercel link            # links this folder to the Vercel project
-vercel env pull .env.local   # pulls POSTGRES_URL locally
-vercel dev              # serves the frontend AND /api functions together
+npm i -g vercel   # if you don't have it
+vercel link
+vercel env pull .env.local     # pulls the Neon connection string down locally
+vercel dev                      # serves the frontend AND /api together
 ```
 
-`npm run dev`/`vite` alone will only serve the frontend — the `/api` routes need `vercel dev`
-(or a live deployment) to run.
+`vite`/`npm run dev` alone only serves the frontend — the `/api` routes need `vercel dev`
+(or a live deployment).
+
+## Cleanup
+
+This build replaced an earlier version (Vercel Postgres, then briefly Supabase) plus a
+separate `/waitlist`-page approach. These files are no longer used and are safe to delete
+before you commit:
+
+- `api/waitlist.js`
+- `api/waitlist-count.js`
+- `src/pages/Waitlist.jsx`
+- `lib/supabaseAdmin.js`
 
 ## Notes
 
-- `LAUNCH_DATE` in `src/App.jsx` — set your real launch date.
-- The hero image currently points at a temporary Figma asset URL (~7-day expiry). Swap
-  `heroImage` in `src/App.jsx` for a permanently hosted image before that window closes.
-- Duplicate emails return `409` and a friendly message instead of erroring out.
+- `LAUNCH_DATE` lives in exactly one place: `src/config.js`.
+- Both forms have a hidden honeypot field for basic bot protection, client + server-side
+  validation, and reject duplicate emails with a friendly `409` message.
+- The property photo in the hero/traveller mockup is a real Afritas app screen pulled from
+  Figma — its asset URL expires ~7 days after being generated; download and re-host it
+  before then.

@@ -1,12 +1,5 @@
-import { Routes, Route } from "react-router-dom";
-import Home from "./pages/Home.jsx";
-import Waitlist from "./pages/Waitlist.jsx";
-
-export default function App() {
-  return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/waitlist" element={<Waitlist />} />
-    </Routes>
-  );
-}
+// This build is a single page (see the spec: "one-page launch and waitlist
+// website"). Home.jsx is rendered directly from main.jsx. This file is kept
+// as a thin re-export so `import App from "./App.jsx"` still works if
+// anything expects it.
+export { default } from "./pages/Home.jsx";
