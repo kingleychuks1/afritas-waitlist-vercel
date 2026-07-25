@@ -10,35 +10,7 @@ import {
 } from "lucide-react";
 import { useCountdown, pad } from "../hooks.jsx";
 import { LAUNCH_DATE } from "../config.js";
-
-function PropertyArt() {
-  return (
-    <svg viewBox="0 0 340 160" className="booking-art" preserveAspectRatio="xMidYMid slice">
-      <rect width="340" height="160" fill="url(#skyGradient)" />
-      <defs>
-        <linearGradient id="skyGradient" x1="0" y1="0" x2="340" y2="160" gradientUnits="userSpaceOnUse">
-          <stop offset="0" stopColor="#1e8f4e" />
-          <stop offset="1" stopColor="#146638" />
-        </linearGradient>
-      </defs>
-      <g opacity="0.9" fill="#146638">
-        <rect x="18" y="70" width="46" height="90" rx="4" />
-        <rect x="72" y="40" width="54" height="120" rx="4" />
-        <rect x="134" y="86" width="40" height="74" rx="4" />
-      </g>
-      <g opacity="0.55" fill="#0f4d2b">
-        <rect x="182" y="58" width="50" height="102" rx="4" />
-        <rect x="240" y="30" width="58" height="130" rx="4" />
-        <rect x="304" y="76" width="30" height="84" rx="4" />
-      </g>
-      <g fill="#fff" opacity="0.85">
-        {[24, 40, 56, 78, 94, 110, 140, 156, 188, 204, 220, 246, 262, 278, 294, 310].map((x, i) => (
-          <rect key={x} x={x} y={92 + ((i * 13) % 40)} width="7" height="7" rx="1.5" />
-        ))}
-      </g>
-    </svg>
-  );
-}
+import propertyPhoto from "../assets/property-bedroom.png";
 
 export default function Hero() {
   const { days, hours, minutes, seconds } = useCountdown(LAUNCH_DATE);
@@ -96,7 +68,7 @@ export default function Hero() {
         <div className="hero-mockup">
           <div className="booking-card">
             <div className="booking-photo">
-              <PropertyArt />
+              <img src={propertyPhoto} alt="A shortlet bedroom listed on Afritas" />
               <span className="booking-service">Shortlet</span>
             </div>
 
