@@ -53,6 +53,20 @@ ul {
   padding: 0;
 }
 
+/* Consistent, brand-colored focus ring for keyboard users on every
+   interactive element (buttons, links, inputs, the details/summary FAQ,
+   checkboxes) instead of relying on inconsistent browser defaults. */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+summary:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--green);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
 .wrap {
   max-width: var(--max);
   margin: 0 auto;
@@ -550,6 +564,13 @@ section {
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
   padding: 36px 30px;
+  transition: border-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.step-card:hover {
+  border-color: var(--green);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
 }
 
 .step-n {
@@ -692,6 +713,12 @@ section {
   grid-template-columns: repeat(4, 1fr);
 }
 
+/* Spacing between stacked .wrap blocks inside a single <section>
+   (e.g. the vendor dashboard block and the category cards below it) */
+.section-stack {
+  margin-top: 88px;
+}
+
 /* Alternating feature sections */
 .alt-grid {
   display: grid;
@@ -808,6 +835,12 @@ section {
   border: 1px solid var(--line);
   border-radius: var(--radius-sm);
   margin-bottom: 10px;
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+
+.app-listing:hover {
+  border-color: var(--green);
+  background: var(--green-tint);
 }
 
 .app-listing-thumb {
@@ -966,6 +999,12 @@ section {
   font-weight: 600;
   color: var(--body);
   cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.wl-toggle button:hover:not(.active) {
+  color: var(--ink);
+  background: var(--green-tint);
 }
 
 .wl-toggle button.active {
@@ -1048,6 +1087,12 @@ section {
   border: 1px solid var(--line);
   color: var(--body);
   cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.chip-checkbox:hover {
+  border-color: var(--green);
+  color: var(--ink);
 }
 
 .chip-checkbox input {
@@ -1055,6 +1100,11 @@ section {
   opacity: 0;
   width: 1px;
   height: 1px;
+}
+
+.chip-checkbox:has(input:focus-visible) {
+  outline: 2px solid var(--green);
+  outline-offset: 2px;
 }
 
 .chip-checkbox.checked {
@@ -1124,6 +1174,15 @@ section {
   display: flex;
   align-items: center;
   gap: 16px;
+  transition: color 0.15s ease;
+}
+
+.faq-item summary:hover {
+  color: var(--green-dark);
+}
+
+.faq-item[open] summary {
+  color: var(--green-dark);
 }
 
 .faq-item summary::-webkit-details-marker {

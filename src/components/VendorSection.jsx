@@ -106,7 +106,7 @@ export default function VendorSection() {
         </Reveal>
       </div>
 
-      <div className="wrap">
+      <div className="wrap section-stack">
         <Reveal className="section-head">
           <span className="eyebrow">
             <span className="eyebrow-dot" />
